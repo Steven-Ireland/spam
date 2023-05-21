@@ -32,6 +32,15 @@ Add a 10 "hello" lines to a particular file per second
 
 Head over to [Releases](https://github.com/Steven-Ireland/spam/releases/) and download the latest release binary for your platform.
 
+## See Also
+
+This program outputs durations in milliseconds for each run -- you can pipe the output to `asciigraph` for a nice visual moving representation:
+
+```bash
+./spam -r 10 -- curl www.google.com | asciigraph -r -h 10 -w 40
+```
+![image](https://github.com/Steven-Ireland/spam/assets/6981727/75737ef7-f807-4ff2-891e-e8aaba37a135)
+
 ## Questions / Contributions
 
 Feel free to open an issue or submit a PR if anything comes up. 
