@@ -28,6 +28,10 @@ Add a 10 "hello" lines to a particular file per second
 ./spam -r 10 -- bash -c 'echo "hello" >> ./text.txt'
 ```
 
+## Installation
+
+Head over to [Releases](https://github.com/Steven-Ireland/spam/releases/) and download the latest release binary for your platform.
+
 ## Questions / Contributions
 
 Feel free to open an issue or submit a PR if anything comes up. 
