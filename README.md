@@ -6,38 +6,49 @@ This is mainly intended for scenarios where you'd like to generate synthetic tra
 
 ## Usage
 
-`./spam [-r RATE_PER_SECOND] -- PROGRAM_ARGS`
+`spam [-r RATE_PER_SECOND] -- PROGRAM_ARGS`
 
 ## Examples
 
 Send 10 req/s to www.google.com
 
 ```bash
-./spam -r 10 -- curl www.google.com
+spam -r 10 -- curl www.google.com
 ```
 
 Send 1 req/s to localhost:8080
 
 ```bash
-./spam -- curl localhost:8080
+spam -- curl localhost:8080
 ```
 
 Add a 10 "hello" lines to a particular file per second
 
 ```bash
-./spam -r 10 -- bash -c 'echo "hello" >> ./text.txt'
+spam -r 10 -- bash -c 'echo "hello" >> ./text.txt'
 ```
 
 ## Installation
 
-Head over to [Releases](https://github.com/Steven-Ireland/spam/releases/) and download the latest release binary for your platform.
+### Mac OS
+
+You can use `brew tap` to install:
+
+```bash
+brew tap Steven-Ireland/homebrew-tap
+brew install spam
+```
+
+### Linux
+
+Head over to [Releases](https://github.com/Steven-Ireland/spam/releases/) and download the latest release binary. You'll need to place it on your PATH manually.
 
 ## See Also
 
 This program outputs durations in milliseconds for each run -- you can pipe the output to `asciigraph` for a nice visual moving representation:
 
 ```bash
-./spam -r 10 -- curl www.google.com | asciigraph -r -h 10 -w 40
+spam -r 10 -- curl www.google.com | asciigraph -r -h 10 -w 40
 ```
 ![image](https://github.com/Steven-Ireland/spam/assets/6981727/75737ef7-f807-4ff2-891e-e8aaba37a135)
 
