@@ -1,0 +1,50 @@
+# Questions: check https://goreleaser.com/customization/build/
+
+env:
+  - GO111MODULE=on
+
+before:
+  hooks:
+  - go mod download
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+    ignore:
+      - goos: darwin
+        goarch: 386
+      - goos: linux
+        goarch: arm
+        goarm: 7
+      - goarm: mips64
+        gomips: hardfloat
+
+archives:
+  - name_template: "spam_{{ .Version }}_{{ .Os }}_{{ .Arch }}"  
+
+project_name: spam
+
+release:
+  github:
+    owner: Steven-Ireland
+    name: spam
+
+brews:
+  - homepage: 'https://github.com/Steven-Ireland/spam'
+    description: 'Spam binary distribution using homebrew.'
+    folder: Formula
+    commit_author:
+      name: Steven Ireland
+      email: steven.ireland@protonmail.com
+    tap:
+      owner: Steven-Ireland
+      name: homebrew-tap
+      pull_request:
+        # Whether to enable it or not.
+        enabled: true
+    license: MIT
