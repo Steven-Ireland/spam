@@ -17,15 +17,15 @@ jobs:
           fetch-depth: 0
       # Install specific version of go
       - name: Setup go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v4
         with:
           go-version: 1.20
       # Run goreleaser with command line flag
       - name: Release
-        uses: goreleaser/goreleaser-action@v2
-        if: startsWith(github.ref, 'refs/tags/')
+        uses: goreleaser/goreleaser-action@v4
         with:
+          distribution: goreleaser
           version: latest
-          args: -f .goreleaser.yaml release --clean
+          args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
